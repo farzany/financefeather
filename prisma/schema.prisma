@@ -61,11 +61,12 @@ enum depositFrequency {
   MONTHLY
 }
 
-model Goals {
+model Goal {
   id               String @id @default(cuid())
   name             String
   description      String
   value            String
+  percentage       String
   depositFrequency depositFrequency
   depositValue     String
 }
