@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
+.scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+}
+  
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: #3A3958;
+    border-radius: 20px;
+}
+  
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #DDD6FE;
+    border-radius: 20px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
