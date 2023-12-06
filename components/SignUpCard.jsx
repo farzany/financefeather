@@ -6,25 +6,41 @@ import React, { useState } from 'react';
 import { ClosedEye, OpenEye } from './icons/EyeIcons';
 import Spinner from './Spinner';
 
-export default function SignInCard() {
+export default function SignUpCard() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleEmailChange = (event) => setEmail(event.target.value.trim());
-  const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value)
+    setErrorMessage(null);
+  };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value)
+    setErrorMessage(null);
+  };
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
     if (!email || !password) {
+      return;
+    }
+    
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match!');
       return;
     }
 
     setLoading(true);
 
-    event.preventDefault();
+    // TODO: Register account
+
     const status = await signIn('credentials', {
       email,
       password,
@@ -37,14 +53,14 @@ export default function SignInCard() {
     } else {
       setLoading(false);
       setPassword('');
-      setErrorMessage('Incorrect email or password. Please try again.');
+      setErrorMessage('An error occured. Please try signing in.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" action="#">
       <h1 className="text-3xl text-left font-semibold text-white">
-        Sign into Finance Feather
+        Register for an Account
       </h1>
       {errorMessage ? (
         <div className="p-4 mb-4 text-sm text-red-700 rounded-lg bg-red-100" role="alert">
@@ -98,32 +114,43 @@ export default function SignInCard() {
           </button>
         </div>
       </div>
-      <div className="flex items-start">
-        <div className="flex items-start">
-          <div className="flex h-5 items-center">
-            <input
-              className="h-4 w-4 rounded border border-slate-300 bg-slate-50 focus:bg-none checked:text-violet-500 focus:ring-violet-300"
-              id="remember"
-              type="checkbox"
-              value=""
-            />
-          </div>
-          <label htmlFor="remember" className="ml-2 text-sm text-violet-200 font-medium">
-            Remember me
-          </label>
+      <div>
+        <label htmlFor="confirmPassword" className="mb-2 block text-violet-200 font-medium">
+          Confirm Password
+        </label>
+        <div className="relative mb-4">
+          <input
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            placeholder={showConfirmPassword ? 'password' : '••••••••'}
+            required
+            type={showConfirmPassword ? 'text' : 'password'}
+          />
+          <button
+            aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+            className="absolute inset-y-0 right-0 my-auto ml-2 mr-2.5 flex h-fit items-center p-1"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            type="button"
+          >
+            {showConfirmPassword ? (
+              <OpenEye />
+            ) : (
+              <ClosedEye />
+            )}
+          </button>
         </div>
-        <span className="ml-auto text-sm text-violet-200 hover:underline hover:cursor-pointer">
-          Forgot Password?
-        </span>
       </div>
       <button disabled={loading} type="submit" className="w-full rounded-lg bg-violet-500 px-5 py-2.5 text-center font-medium text-white hover:bg-violet-600 focus:outline-none focus:ring-4 focus:ring-violet-300 disabled:cursor-not-allowed">
         {loading ? (
           <div className="flex items-center justify-center">
             <Spinner />
-            Signing in...
+            Registering...
           </div>
         ) : (
-          'Sign in to your account'
+          'Register for Finance Feather'
         )}
       </button>
     </form>
