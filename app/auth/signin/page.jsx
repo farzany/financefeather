@@ -7,10 +7,10 @@ export default async function SignIn() {
     <div className="flex h-screen justify-center items-center bg-[#2E2E48]">
       <div className="rounded-lg w-full max-w-[1000px] h-[700px] bg-[#3A3958] flex justify-end">
         <div className="w-1/2 flex-shrink-0 flex justify-start flex-col items-center">
-          <div className="mt-28">
+          <div className="mt-24">
             <Image src={"/logo.png"} width={300} height={500} />
           </div>
-          <div className="text-4xl text-violet-200 w-full text-center py-8 font-semibold">
+          <div className="text-4xl text-violet-200 w-full text-center mt-4 py-8 font-semibold">
             Welcome to <br /> Finance Feather
           </div>
           <hr className="border-2 w-64 rounded border-[#2E2E48]" />
