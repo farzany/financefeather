@@ -54,7 +54,7 @@ export default function Goals() {
             ))}
           </div>
           <div className="text-right mt-6">
-            <button onClick={handleCreateGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl">New Goal</button>
+            <button onClick={handleCreateGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">New Goal</button>
           </div>
         </div>
   );
@@ -89,7 +89,7 @@ export default function Goals() {
           </div>
         </div>
         <div className="text-center mt-5">
-        <button onClick={handleCreatedGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl">Create Goal</button>
+        <button onClick={handleCreatedGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">Create Goal</button>
         </div>
       </div>
     </div>
