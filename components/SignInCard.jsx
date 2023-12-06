@@ -44,8 +44,8 @@ export default function SignInCard() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" action="#">
-      <h1 className="font-jockeyOne text-5xl text-center text-gray-700">
-        Finance Feather
+      <h1 className="text-3xl text-left font-semibold text-white">
+        Log into Finance Feather
       </h1>
       {errorMessage && (
         <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
@@ -53,11 +53,11 @@ export default function SignInCard() {
         </div>
       )}
       <div>
-        <label htmlFor="email" className="mb-2 block font-medium">
+        <label htmlFor="email" className="mb-2 block text-[#AAAACF] font-medium">
           Email
         </label>
         <input
-          className="block w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500"
+          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-[#AAAACF] focus:border-blue-500 focus:ring-blue-500"
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -67,12 +67,12 @@ export default function SignInCard() {
         />
       </div>
       <div>
-        <label htmlFor="password" className="mb-2 block font-medium">
+        <label htmlFor="password" className="mb-2 block text-[#AAAACF] font-medium">
           Password
         </label>
         <div className="relative">
           <input
-            className="block w-full rounded-lg border border-slate-300 bg-slate-50 p-2.5 pr-12 placeholder:text-slate-400 focus:border-blue-500 focus:ring-blue-500"
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-[#AAAACF] focus:border-blue-500 focus:ring-blue-500"
             id="password"
             name="password"
             value={password}
@@ -105,15 +105,15 @@ export default function SignInCard() {
               value=""
             />
           </div>
-          <label htmlFor="remember" className="ml-2 text-sm font-medium">
+          <label htmlFor="remember" className="ml-2 text-sm text-[#AAAACF] font-medium">
             Remember me
           </label>
         </div>
-        <span className="ml-auto text-sm text-blue-500 hover:underline hover:cursor-pointer">
+        <span className="ml-auto text-sm text-[#AAAACF] hover:underline hover:cursor-pointer">
           Forgot Password?
         </span>
       </div>
-      <button disabled={loading} type="submit" className="w-full rounded-lg bg-blue-500 px-5 py-2.5 text-center font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed">
+      <button disabled={loading} type="submit" className="w-full rounded-lg bg-[#615f92] px-5 py-2.5 text-center font-medium text-white hover:bg-[#3A3958] focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed">
         {loading ? (
           <div className="flex items-center justify-center">
             <Spinner />
