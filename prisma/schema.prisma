@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -53,4 +53,19 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum depositFrequency {
+  WEEKLY
+  BIWEEKlY
+  MONTHLY
+}
+
+model Goals {
+  id               String @id @default(cuid())
+  name             String
+  description      String
+  value            String
+  depositFrequency depositFrequency
+  depositValue     String
 }
