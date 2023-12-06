@@ -4,10 +4,6 @@ import {React, useState} from "react"
 
 export default function Goals() {
 
-  const darkPurple = "#2E2E48";
-  const mediumPurple = "#3A3958";
-  const lightPurple = "#AAAACF";
-
   const [goals, setGoals] = useState([
     { name: 'Headset', percentage: 96 },
     { name: 'Samsung Galaxy S23 FE', percentage: 15 },
