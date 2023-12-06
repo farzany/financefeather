@@ -5,7 +5,6 @@ import { signIn } from 'next-auth/react';
 import React, { useState } from 'react';
 import { ClosedEye, OpenEye } from './icons/EyeIcons';
 import Spinner from './Spinner';
-import Logo from './icons/Logo';
 
 export default function SignInCard() {
   const router = useRouter();
