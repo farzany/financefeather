@@ -60,7 +60,7 @@ export default function SignInCard() {
           Email
         </label>
         <input
-          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          className="block w-full rounded-lg border text-violet-200 border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -75,7 +75,7 @@ export default function SignInCard() {
         </label>
         <div className="relative">
           <input
-            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
             id="password"
             name="password"
             value={password}

@@ -8,6 +8,7 @@ import Spinner from './Spinner';
 
 export default function SignUpCard() {
   const router = useRouter();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -16,6 +17,7 @@ export default function SignUpCard() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const handleNameChange = (event) => setName(event.target.value.trim());
   const handleEmailChange = (event) => setEmail(event.target.value.trim());
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
@@ -33,13 +35,23 @@ export default function SignUpCard() {
     }
     
     if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match!');
+      setErrorMessage('Passwords do not match.');
       return;
     }
 
     setLoading(true);
 
-    // TODO: Register account
+    await fetch("http://localhost:3000/auth/user/create", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
 
     const status = await signIn('credentials', {
       email,
@@ -53,30 +65,34 @@ export default function SignUpCard() {
     } else {
       setLoading(false);
       setPassword('');
-      setErrorMessage('An error occured. Please try signing in.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" action="#">
-      <h1 className="text-3xl text-left font-semibold text-white">
+      <h1 className="text-3xl mb-12 text-left font-semibold text-white">
         Register for an Account
       </h1>
-      {errorMessage ? (
-        <div className="p-4 mb-4 text-sm text-red-700 rounded-lg bg-red-100" role="alert">
-          <span className="font-medium">{errorMessage}</span>
-        </div>
-      ) : (
-        <div className="p-4 mb-4 text-sm text-[#2E2E48]">
-          .
-        </div>
-      )}
+      <div>
+        <label htmlFor="name" className="mb-2 block text-violet-200 font-medium">
+          Full Name
+        </label>
+        <input
+          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          id="name"
+          name="name"
+          onChange={handleNameChange}
+          placeholder="John Doe"
+          required
+          type="name"
+        />
+      </div>
       <div>
         <label htmlFor="email" className="mb-2 block text-violet-200 font-medium">
           Email
         </label>
         <input
-          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -91,7 +107,7 @@ export default function SignUpCard() {
         </label>
         <div className="relative">
           <input
-            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
             id="password"
             name="password"
             value={password}
@@ -120,7 +136,7 @@ export default function SignUpCard() {
         </label>
         <div className="relative mb-4">
           <input
-            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            className={`block w-full rounded-lg border ${errorMessage ? 'border-red-400' : 'border-[#3A3958]'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500`}
             id="confirmPassword"
             name="confirmPassword"
             value={confirmPassword}
@@ -141,6 +157,9 @@ export default function SignUpCard() {
               <ClosedEye />
             )}
           </button>
+          <span className={`${errorMessage ? 'block' : 'hidden'} text-red-400 pt-1 absolute`}>
+            {errorMessage}
+          </span>
         </div>
       </div>
       <button disabled={loading} type="submit" className="w-full rounded-lg bg-violet-500 px-5 py-2.5 text-center font-medium text-white hover:bg-violet-600 focus:outline-none focus:ring-4 focus:ring-violet-300 disabled:cursor-not-allowed">

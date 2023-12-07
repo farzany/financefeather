@@ -20,7 +20,7 @@ export default function AuthLayout({ children }) {
             <div className="px-12 text-2xl text-center text-violet-200 mt-8">
               Your lightweight finance management solution
             </div>
-            <a href="/auth/signin" className={`absolute text-lg rounded-l-xl bottom-28 right-0 px-4 py-3 w-32 ${pathName.includes('signin') ? 'text-violet-200 bg-[#2E2E48]' : 'text-[#AAAACF]'}`}>
+            <a href="/auth/signin" className={`absolute text-lg rounded-l-xl bottom-[7.5rem] right-0 px-4 py-3 w-32 ${pathName.includes('signin') ? 'text-violet-200 bg-[#2E2E48]' : 'text-[#AAAACF]'}`}>
               Sign In
             </a>
             <a href="/auth/signup" className={`absolute text-lg rounded-l-xl bottom-16 right-0 px-4 py-3 w-32 ${pathName.includes('signup') ? 'text-violet-200 bg-[#2E2E48]' : 'text-[#AAAACF]'}`}>
