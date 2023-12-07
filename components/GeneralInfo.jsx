@@ -4,6 +4,7 @@ import React, { useState, useEffect} from "react";
 export default function GeneralInfo() {
     const [totalSum, setTotalSum] = useState(0);
 
+    // hard coded data for recent transactions. Change if you want
     const data = [
         { transaction: "Textbook Purchase", value: "$60.00" },
         { transaction: "Charity Donation", value: "$5.00" },
@@ -19,6 +20,7 @@ export default function GeneralInfo() {
         { transaction: "Bus Pass", value: "$20.00" },
     ];
 
+    // Calculate the total amount for the recent transactions.
     const calcTotal = (data) => {
         const total = data.reduce((total, item) => {
             const value = parseFloat(item.value.replace('$', ''));
@@ -53,20 +55,22 @@ export default function GeneralInfo() {
                     <ul className="space-y-3 flex flex-col h-full justify-center text-violet-200 font-medium">
                         <span className="text-sm mb-1 pl-5">Recent Transactions</span>
                         <div className="h-5/6 overflow-auto">
-                            {data.map((item, index) => (
+                            {data.map((item, index) => 
+                                (
                                 <li key={index} className="pt-3">  
                                     <button className="flex w-full justify-between items-center rounded-xl p-3 text-sm bg-[#3A3958] hover:bg-[#2E2E48]">
-                                    <div className="flex flex-1 justify-between">
-                                        <div className="text-left w-4/6 whitespace-nowrap overflow-hidden overflow-ellipsis pr-2 border-r-[3px] border-[#2E2E48]">
-                                            {item.transaction}
+                                        <div className="flex flex-1 justify-between">
+                                            <div className="text-left w-4/6 whitespace-nowrap overflow-hidden overflow-ellipsis pr-2 border-r-[3px] border-[#2E2E48]">
+                                                {item.transaction}
+                                            </div>
+                                            <div className="text-right whitespace-nowrap overflow-hidden overflow-ellipsis pl-2">
+                                                {item.value}
+                                            </div>
                                         </div>
-                                        <div className="text-right whitespace-nowrap overflow-hidden overflow-ellipsis pl-2">
-                                            {item.value}
-                                        </div>
-                                    </div>
                                     </button>
                                 </li>
-                            ))}
+                                ))
+                            }
                         </div>
                     </ul>
                 </div>
