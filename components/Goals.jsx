@@ -35,7 +35,7 @@ export default function Goals({ goals }) {
 
   const renderGoalHome = () => (
     <div>
-      <div className="h-[400px] overflow-y-scroll scrollbar-custom pr-2">
+      <div className="h-[400px] overflow-y-auto scrollbar-custom pr-2">
         {goalsLocal.map((goal, index) => (
           <div key={index} className="p-4 rounded-lg mb-4 bg-[#3A3958]">
             <div className="flex justify-between mb-2 p-2">
