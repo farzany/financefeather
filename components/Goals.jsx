@@ -64,31 +64,32 @@ export default function Goals({ goals }) {
       <h2 className="text-violet-200 text-2xl font-semibold">New Goal</h2>
       <div className="border-t-2 border-violet-200 pt-4 text-xl">
         <div className="py-4 flex justify-between items-center">
-          <label className="text-violet-200 font-medium mb-2 pt-0.5" htmlFor="goalName">Goal Name:</label>
+          <label className="text-violet-200 font-medium mb-2 pt-1" htmlFor="goalName">Goal Name:</label>
           <div className="flex-grow pl-4">
-            <input className="bg-[#2E2E48] w-full rounded-sm border text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" id="goalName" value={goalName} onChange={handleGoalNameInputChange} placeholder="New No-Name Shoes" />
+            <input className="bg-[#2E2E48] w-full rounded-sm border text-lg text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" id="goalName" value={goalName} onChange={handleGoalNameInputChange} placeholder="New No-Name Shoes" />
           </div>
         </div>
         <div className="py-4 flex justify-between items-center">
-          <label className="text-violet-200 font-medium mb-2 block pt-0.5" htmlFor="goalValue">Value:</label>
+          <label className="text-violet-200 font-medium mb-2 block pt-1" htmlFor="goalValue">Value:</label>
           <div className=" flex">
             <h2 className="text-violet-200 text-2xl px-1 pt-0.5">$</h2>
-            <input className="bg-[#2E2E48] w-full rounded-sm border text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" id="goalValue" placeholder="130.00" />
+            <input className="bg-[#2E2E48] w-full rounded-sm border text-lg text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" id="goalValue" placeholder="130.00" />
           </div>
         </div>
         <div className="py-4">
           <label className="text-violet-200 font-medium block" htmlFor="autoDeposit">Auto-deposit:</label>
           <div className="flex justify-between items-center pl-8 py-4">
-            <select className="bg-[#2E2E48] text-[#AAAACF] rounded-sm p-1 w-full" id="autoDeposit">
+            <select className="bg-[#2E2E48] border text-lg text-violet-200 border-[#3A3958] rounded-sm p-1 w-full placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" id="autoDeposit">
+              <option disabled selected>Select an option</option>
               <option>Biweekly</option>
             </select>
           </div>
           <div className="flex justify-between items-center pl-8">
             <h2 className="text-violet-200 text-2xl px-1 pt-0.5">$</h2>
-            <input className="bg-[#2E2E48] w-full rounded-sm border text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" placeholder="20.00" />
+            <input className="bg-[#2E2E48] w-full rounded-sm border text-lg text-violet-200 border-[#3A3958] p-1 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500" type="text" placeholder="20.00" />
           </div>
         </div>
-        <div className="text-center mt-5">
+        <div className="text-center my-3">
           <button type="button" onClick={handleCreatedGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">Create Goal</button>
         </div>
       </div>
