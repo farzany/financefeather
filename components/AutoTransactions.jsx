@@ -1,6 +1,6 @@
 'use client'
 
-import {React, useState} from 'react'
+import {React, useState} from 'react';
 
 export default function AutoTransactions() {
   const [filter, setFilter] = useState('All');
