@@ -96,7 +96,7 @@ export default function Goals({ goals }) {
           </div>
           <div className="mt-2 flex items-center justify-between">
             <h2 className="mr-2 text-2xl text-violet-200">$</h2>
-            <input className="w-full rounded-md border border-[#3A3958] bg-[#2E2E48] p-1 text-lg text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500" type="text" placeholder="20.00" />
+            <input className="w-full rounded-md border border-[#3A3958] bg-[#2E2E48] p-1 px-2 text-lg text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500" type="text" placeholder="20.00" />
           </div>
         </div>
         <div className="mt-9 text-center">
