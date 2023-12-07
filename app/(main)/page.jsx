@@ -17,15 +17,14 @@ export default async function Home() {
       userId: session.user.id,
     },
     orderBy: {
-      percentage: 'asc',
+      id: 'desc',
     }
   });
   
   return (
     <main className="relative flex justify-center items-center h-screen">
-      <Goals goals={goals} />
       <SignOutButton />
-      {/* <Goals /> */}
+      {/* <Goals goals={goals} /> */}
       {/* <AutoTransactions /> */}
       {/* <Distributions /> */}
     </main>
