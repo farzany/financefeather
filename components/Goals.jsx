@@ -24,7 +24,7 @@ export default function Goals({ goals }) {
         'Content-type': 'application/json; charset=UTF-8'
       },
     });
-    setGoalsLocal([{userId: session.user.id, name: goalName, percentage: 0 }, ...goalsLocal]);
+    setGoalsLocal([{ userId: session.user.id, name: goalName, percentage: 0 }, ...goalsLocal]);
     setGoalCreated(false);
     setGoalName('');
   };
