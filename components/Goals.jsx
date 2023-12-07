@@ -1,18 +1,11 @@
 'use client'
 
+import { useSession } from "next-auth/react";
 import {React, useState} from "react"
 
-export default function Goals() {
-
-  const [goals, setGoals] = useState([
-    { name: 'Headset', percentage: 96 },
-    { name: 'Samsung Galaxy S23 FE', percentage: 15 },
-    { name: 'Jane Bday Gift', percentage: 100 },
-    { name: "2022 Spain Vacation", percentage: 100 },
-  ]);
-
+export default function Goals({ goals }) {
+  const { data: session, status } = useSession();
   const [goalName, setGoalName] = useState('');
-
   const [goalCreated, setGoalCreated] = useState(false);
 
   const handleCreateGoal = () => {
@@ -20,8 +13,16 @@ export default function Goals() {
   };
 
   const handleCreatedGoal = () => {
-    const newGoal = { name: goalName, percentage: 0 };
-    setGoals([newGoal, ...goals]);
+    fetch("http://localhost:3000/goal/create", {
+      method: "POST",
+      body: JSON.stringify({
+        userId: session.user.id,
+        name: goalName,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
     setGoalCreated(false);
   };
 

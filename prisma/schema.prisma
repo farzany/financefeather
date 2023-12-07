@@ -67,7 +67,7 @@ model Goal {
   name             String
   description      String?
   value            String?
-  percentage       String
+  percentage       String @default("0")
   depositFrequency depositFrequency?
   depositValue     String?
   userId           String
