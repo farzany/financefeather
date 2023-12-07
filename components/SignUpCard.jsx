@@ -15,17 +15,17 @@ export default function SignUpCard() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleNameChange = (event) => setName(event.target.value.trim());
   const handleEmailChange = (event) => setEmail(event.target.value.trim());
   const handlePasswordChange = (event) => {
     setPassword(event.target.value)
-    setErrorMessage(null);
+    setErrors({});
   };
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value)
-    setErrorMessage(null);
+    setErrors({});
   };
 
   const handleSubmit = async (event) => {
@@ -35,13 +35,13 @@ export default function SignUpCard() {
     }
     
     if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
+      setErrors(prev => ({...prev, ...{ confirmPassword: 'Passwords do not match.' }}));
       return;
     }
 
     setLoading(true);
 
-    await fetch("http://localhost:3000/auth/user/create", {
+    const response = await fetch("http://localhost:3000/auth/user/create", {
       method: "POST",
       body: JSON.stringify({
         name: name,
@@ -53,18 +53,25 @@ export default function SignUpCard() {
       }
     });
 
-    const status = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-      callbackUrl: '/',
-    });
+    const data = await response.json();
 
-    if (!status?.error) {
-      router.refresh();
+    if (data.account) {
+      const status = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: '/',
+      });
+  
+      if (!status?.error) {
+        router.refresh();
+      } else {
+        setLoading(false);
+        setPassword('');
+      }
     } else {
       setLoading(false);
-      setPassword('');
+      setErrors(prev => ({...prev, ...{ email: 'This email is already in use, try another.' }}))
     }
   };
 
@@ -92,7 +99,7 @@ export default function SignUpCard() {
           Email
         </label>
         <input
-          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          className={`block w-full rounded-lg border ${errors?.email ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none`}
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -100,6 +107,9 @@ export default function SignUpCard() {
           required
           type="email"
         />
+        <span className={`${errors?.email ? 'block' : 'hidden'} text-red-400 text-sm pt-1 absolute`}>
+          {errors.email}
+        </span>
       </div>
       <div>
         <label htmlFor="password" className="mb-2 block text-violet-200 font-medium">
@@ -136,7 +146,7 @@ export default function SignUpCard() {
         </label>
         <div className="relative mb-4">
           <input
-            className={`block w-full rounded-lg border ${errorMessage ? 'border-red-400' : 'border-[#3A3958]'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500`}
+            className={`block w-full rounded-lg border ${errors?.confirmPassword ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none`}
             id="confirmPassword"
             name="confirmPassword"
             value={confirmPassword}
@@ -157,8 +167,8 @@ export default function SignUpCard() {
               <ClosedEye />
             )}
           </button>
-          <span className={`${errorMessage ? 'block' : 'hidden'} text-red-400 pt-1 absolute`}>
-            {errorMessage}
+          <span className={`${errors?.confirmPassword ? 'block' : 'hidden'} text-red-400 text-sm pt-1 absolute`}>
+            {errors.confirmPassword}
           </span>
         </div>
       </div>
