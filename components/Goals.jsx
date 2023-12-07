@@ -35,28 +35,28 @@ export default function Goals({ goals }) {
 
   const renderGoalHome = () => (
     <div>
-          <div className="h-[400px] overflow-y-scroll scrollbar-custom pr-2">
-            {goalsLocal.map((goal, index) => (
-              <div key={index} className="p-4 rounded-lg mb-4 bg-[#3A3958]">
-                <div className="flex justify-between mb-2 p-2">
-                  <span className="text-violet-200 text-xl font-medium">{goal.name}</span>
-                  <span className="text-violet-200 text-xl font-medium">
-                    {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
-                  </span>
-                </div>
-                <div className="w-full rounded-full h-2.5 bg-[#2E2E48]">
-                  <div
-                    className="h-2.5 rounded-full bg-violet-200"
-                    style={{ width: `${goal.percentage}%` }}
-                  ></div>
-                </div>
+        <div className="h-[400px] overflow-y-scroll scrollbar-custom pr-2">
+          {goalsLocal.map((goal, index) => (
+            <div key={index} className="p-4 rounded-lg mb-4 bg-[#3A3958]">
+              <div className="flex justify-between mb-2 p-2">
+                <span className="text-violet-200 text-xl font-medium">{goal.name}</span>
+                <span className="text-violet-200 text-xl font-medium">
+                  {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
+                </span>
               </div>
-            ))}
-          </div>
-          <div className="text-right mt-6">
-            <button onClick={handleCreateGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">New Goal</button>
-          </div>
+              <div className="w-full rounded-full h-2.5 bg-[#2E2E48]">
+                <div
+                  className="h-2.5 rounded-full bg-violet-200"
+                  style={{ width: `${goal.percentage}%` }}
+                ></div>
+              </div>
+            </div>
+          ))}
         </div>
+        <div className="text-right mt-6">
+          <button onClick={handleCreateGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">New Goal</button>
+        </div>
+    </div>
   );
 
   const renderGoalForm = () => (
@@ -89,7 +89,7 @@ export default function Goals({ goals }) {
           </div>
         </div>
         <div className="text-center mt-5">
-        <button onClick={handleCreatedGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">Create Goal</button>
+          <button onClick={handleCreatedGoal} className="text-violet-200 bg-violet-500 px-3 py-1 rounded-md text-xl font-semibold">Create Goal</button>
         </div>
       </div>
     </div>
