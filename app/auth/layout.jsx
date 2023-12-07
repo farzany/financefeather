@@ -4,6 +4,8 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import Image from 'next/image';
+import AuthLayout from './authLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +24,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <AuthLayout>
+          {children}
+        </AuthLayout>
       </body>
     </html>
   );
