@@ -32,7 +32,7 @@ export default async function Home() {
       </div>
       <div className="custom-grid-rows grid h-full min-w-[500px] grid-cols-1 gap-4 overflow-y-auto rounded-3xl border-[#3A3958] bg-[#3A3958] text-violet-200 md:grid-cols-2 lg:w-3/4 lg:grid-cols-4">
         <div className="row-span-1 ml-8 mt-12 whitespace-nowrap text-4xl font-medium">
-          Hello, Cameron! Welcome back 👋
+          Hello, {session.user.name.split(' ')[0]}! Welcome back 👋
         </div>
         <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
           1
