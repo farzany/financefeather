@@ -1,8 +1,27 @@
 'use client';
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function GeneralInfo() {
     const [totalSum, setTotalSum] = useState(0);
+    const [isHidden, setIsHidden] = useState(false);
+    const dropdownRef = useRef(null);
+
+    const toggleVisibility = () => {
+        setIsHidden(!isHidden);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target) && event.target.id !== 'dropdownMenuIconButton') {
+                setIsHidden(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
 
     // hard coded data for recent transactions. Change if you want
     const data = [
@@ -34,27 +53,42 @@ export default function GeneralInfo() {
     }, [])
 
     return (
-        <div>
-            <aside id="default-sidebar" className="relative top-0 right-0 z-40 w-full h-screen">
+        <div className="relative">
+            <aside id="default-sidebar" className="relative top-0 right-0 z-40 h-screen">
             <div className="flex flex-col h-full py-4 overflow-y-auto bg-[#2E2E48]">
-                <a href="#" className="flex items-center p-4 mx-3 text-violet-200 group">
+                <div className="relative flex items-center p-4 mx-3 text-violet-200 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
 
                     <span className="ms-2 pr-14 whitespace-nowrap">Cameron Murphy</span>
 
-                    <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 19" fill="none">
-                        <circle cx="2.5" cy="2.5" r="2.5" fill="#AAAACF"/>
-                        <circle cx="2.5" cy="9.5" r="2.5" fill="#AAAACF"/>
-                        <circle cx="2.5" cy="16.5" r="2.5" fill="#AAAACF"/>
-                    </svg>
-                </a>
+                    <button onClick={toggleVisibility} id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" className="inline-flex items-center" type="button">
+                        <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 19" fill="none">
+                            <circle cx="2.5" cy="2.5" r="2.5" fill="#AAAACF"/>
+                            <circle cx="2.5" cy="9.5" r="2.5" fill="#AAAACF"/>
+                            <circle cx="2.5" cy="16.5" r="2.5" fill="#AAAACF"/>
+                        </svg>
+                    </button>
+                    <div ref={dropdownRef} id="dropdownDots" className={`absolute right-5 top-12 z-10 ${isHidden ? '' : 'hidden'} bg-[#3A3958] rounded-lg shadow w-44`}>
+                        <ul className=" text-sm text-violet-200" aria-labelledby="dropdownMenuIconButton">
+                        <li>
+                            <a href="#" className="block px-4 py-2 rounded-lg hover:bg-[#2E2E48]">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" className="block px-4 py-2 rounded-lg hover:bg-[#2E2E48]">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#" className="block px-4 py-2 rounded-lg hover:bg-[#2E2E48]">Earnings</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div className="border-t h-[75%] m-4 border-b">
                     <ul className="space-y-3 flex flex-col h-full justify-center text-violet-200 font-medium">
-                        <span className="text-sm mb-1 pl-5">Recent Transactions</span>
-                        <div className="h-5/6 overflow-auto">
+                        <span className="text-sm mb-1 pl-2">Recent Transactions</span>
+                        <div className="h-5/6 pr-2 overflow-auto scrollbar-custom">
                             {data.map((item, index) => 
                                 (
                                 <li key={index} className="pt-3">  
