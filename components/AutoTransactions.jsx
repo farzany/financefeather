@@ -22,23 +22,31 @@ export default function AutoTransactions() {
 
   return (
     <div className="w-[550px] h-[550px] p-4 rounded-lg bg-[#2E2E48]">
-      <h2 className="text-violet-200 text-3xl font-semibold mb-4 text-center">Automatic Transactions</h2>
-      <div className="h-[400px] overflow-y-auto scrollbar-custom pr-2">
-        {filteredTransactions.map((transaction, index) => (
-          <div key={index} className="p-4 rounded-lg mb-4 bg-[#3A3958]">
-            <div className="flex justify-between mb-2 p-2">
-              <span className="text-violet-200 text-xl font-medium">{transaction.name}</span>
-              <span className="text-violet-200 text-xl font-medium">{transaction.amount}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="items-center mt-6">
-        <button type="button" onClick={() => setFilter('All')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'All' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>All</button>
-        <button type="button" onClick={() => setFilter('Weekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Weekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Weekly</button>
-        <button type="button" onClick={() => setFilter('Biweekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Biweekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Biweekly</button>
-        <button type="button" onClick={() => setFilter('Monthly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Monthly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Monthly</button>
-      </div>
+      <ul className="space-y-3 flex flex-col h-full justify-center text-violet-200 font-medium">
+        <h2 className="text-3xl font-semibold mb-4 text-center">Automatic Transactions</h2>
+        <div className="h-[400px] overflow-y-auto scrollbar-custom pr-2">
+          {filteredTransactions.map((transaction, index) => (
+            <li key={index} className="pt-3">
+              <button className="text-xl flex w-full justify-between items-center rounded-xl p-3 text-sm bg-[#3A3958] hover:bg-[#2E2E48]">
+                <div className="flex flex-1 justify-between">
+                  <div className="text-left w-4/6 whitespace-nowrap overflow-hidden overflow-ellipsis pr-2 border-r-[3px] border-[#2E2E48]">
+                    {transaction.name}
+                  </div>
+                  <div className="text-right whitespace-nowrap overflow-hidden overflow-ellipsis pl-2">
+                    {transaction.amount}
+                  </div>
+                </div>
+              </button>
+            </li>
+          ))}
+        </div>
+        <div className="items-center mt-6">
+          <button type="button" onClick={() => setFilter('All')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'All' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>All</button>
+          <button type="button" onClick={() => setFilter('Weekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Weekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Weekly</button>
+          <button type="button" onClick={() => setFilter('Biweekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Biweekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Biweekly</button>
+          <button type="button" onClick={() => setFilter('Monthly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Monthly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Monthly</button>
+        </div>
+      </ul>
     </div>
   )
 }

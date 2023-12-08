@@ -41,7 +41,7 @@ export default async function Home() {
           2
         </div>
         <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:mr-6">
-          3
+          <AutoTransactions />
         </div>
       </div>
       <div>
