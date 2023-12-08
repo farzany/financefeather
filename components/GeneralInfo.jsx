@@ -1,7 +1,10 @@
 'use client';
+
+import { useSession } from 'next-auth/react';
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function GeneralInfo() {
+  const { data: session } = useSession();
   const [totalSum, setTotalSum] = useState(0);
   const [isHidden, setIsHidden] = useState(false);
   const dropdownRef = useRef(null);
@@ -56,13 +59,15 @@ export default function GeneralInfo() {
     <div className="relative">
       <aside id="default-sidebar" className="relative right-0 top-0 z-40 h-screen">
         <div className="flex h-full flex-col overflow-y-auto bg-[#2E2E48] py-4">
-          <div className="group relative mx-3 flex items-center p-4 text-violet-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-
-            <span className="ms-2 whitespace-nowrap pr-14">Cameron Murphy</span>
-
+          <div className="group relative mx-3 flex items-center justify-between p-4 text-violet-200">
+            <div className="flex">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="ms-2 whitespace-nowrap pr-14">
+                {session.user.name}
+              </span>
+            </div>
             <button onClick={toggleVisibility} id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" className="inline-flex items-center" type="button">
               <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 19" fill="none">
                 <circle cx="2.5" cy="2.5" r="2.5" fill="#AAAACF"/>
