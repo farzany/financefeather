@@ -26,7 +26,6 @@ export default async function Home() {
     <main className="flex h-screen w-full flex-col bg-[#2E2E48] md:flex-row">
       {/* <Goals goals={goals} /> */}
       {/* <AutoTransactions /> */}
-      {/* <Distributions /> */}
       <div>
         <LeftNav/>
       </div>
@@ -34,8 +33,8 @@ export default async function Home() {
         <div className="row-span-1 ml-8 mt-12 whitespace-nowrap text-4xl font-medium">
           Hello, {session.user.name.split(' ')[0]}! Welcome back 👋
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
-          1
+        <div className="col-span-1 row-span-1 mx-6 mb-4 rounded-3xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
+          <Distributions/>
         </div>
         <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:ml-6">
           <Goals goals={goals} />
