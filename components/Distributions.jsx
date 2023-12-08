@@ -1,6 +1,6 @@
 'use client';
 import React, {useState} from "react"
-import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
+import { PieChart } from '@mui/x-charts/PieChart';
 import { motion } from "framer-motion"
 
 export default function Distributions() {
@@ -19,9 +19,6 @@ export default function Distributions() {
       } 
     }
   }
-  // const selectedCard = (e) => {
-  //   setIsSelected(e);
-  // }
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
@@ -29,6 +26,7 @@ export default function Distributions() {
         <span>Financial Distributions</span>
       </div>
       <div className="relative grid grid-cols-6 grid-rows-1 items-center h-full w-full gap-4 px-12">
+
         <motion.div 
           className={`relative flex items-center justify-center cursor-pointer ${isSelected === 'Debit' ? 'col-span-4' : 'col-span-1 hover:bg-[#504e78]'} row-span-1 h-3/4 rounded-3xl bg-[#3A3958]`}
           onClick={() => setIsSelected('Debit')}
@@ -39,6 +37,7 @@ export default function Distributions() {
           <div className="absolute top-0 left-0 p-8 text-xl font-medium">
             Debit
           </div>
+          {/* Debit Pie chart */}
           <PieChart
             colors={['#fb923c', '#facc15', '#f87171', '#e879f9']} // Use palette
             margin={{bottom: 10, left: 200,}}
@@ -74,6 +73,7 @@ export default function Distributions() {
             height={300}
           />
         </motion.div>
+
         <motion.div className={`relative flex items-center justify-center cursor-pointer ${isSelected === 'Credit' ? 'col-span-4' : 'col-span-1 hover:bg-[#504e78]'} row-span-1 h-3/4 rounded-3xl bg-[#3A3958]`}
           onClick={() => setIsSelected('Credit')}
           variants={variants}
@@ -83,6 +83,7 @@ export default function Distributions() {
           <div className="absolute top-0 left-0 p-8 text-xl font-medium">
             Credit
           </div>
+          {/* Credit Pie Chart */}
           <PieChart
             colors={['#db2777', '#a855f7', '#fb7185', '#c026d3']} // Use palette
             margin={{bottom: 10, left: 200,}}
@@ -118,6 +119,7 @@ export default function Distributions() {
             height={300}
           />
         </motion.div>
+
         <motion.div className={`relative flex items-center justify-center cursor-pointer ${isSelected === 'Investments' ? 'col-span-4' : 'col-span-1 hover:bg-[#504e78]'} row-span-1 h-3/4 rounded-3xl bg-[#3A3958]`}
           onClick={() => setIsSelected('Investments')}
           variants={variants}
@@ -127,6 +129,7 @@ export default function Distributions() {
           <div className="absolute top-0 left-0 p-8 text-xl font-medium">
             Investments
           </div>
+          {/* Investments Pie Chart */}
           <PieChart
             colors={['#fb923c', '#facc15', '#f87171', '#e879f9']} // Use palette
             margin={{bottom: 10, left: 200,}}
