@@ -44,20 +44,22 @@ export default function Goals({ goals }) {
     <div>
       <div className="scrollbar-custom h-[400px] overflow-y-auto pr-2">
         {goalsLocal.map((goal, index) => (
-          <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
-            <div className="mb-2 flex justify-between p-2">
-              <span className="text-xl font-medium text-violet-200">{goal.name}</span>
-              <span className="text-xl font-medium text-violet-200">
-                {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
-              </span>
+          <button type="button" className="w-full">
+            <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
+              <div className="mb-2 flex justify-between text-xl font-medium text-violet-200">
+                <span className="text-left w-4/6 pr-2 border-r-[3px] border-[#2E2E48]">{goal.name}</span>
+                <span>
+                  {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
+                </span>
+              </div>
+              <div className="h-2.5 w-full rounded-full bg-[#2E2E48]">
+                <div
+                  className="h-2.5 rounded-full bg-violet-200"
+                  style={{ width: `${goal.percentage}%` }}
+                />
+              </div>
             </div>
-            <div className="h-2.5 w-full rounded-full bg-[#2E2E48]">
-              <div
-                className="h-2.5 rounded-full bg-violet-200"
-                style={{ width: `${goal.percentage}%` }}
-              />
-            </div>
-          </div>
+          </button>
         ))}
       </div>
       <div className="mt-4 text-right">
