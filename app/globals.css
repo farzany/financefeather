@@ -16,6 +16,20 @@
   }
 }
 
+.scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+}
+  
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: #3A3958;
+    border-radius: 20px;
+}
+  
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #AAAACF;
+    border-radius: 20px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

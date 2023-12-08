@@ -45,6 +45,7 @@ model User {
   image          String?
   accounts       Account[]
   sessions       Session[]
+  goals          Goal[]
 }
 
 model VerificationToken {
@@ -64,9 +65,11 @@ enum depositFrequency {
 model Goal {
   id               String @id @default(cuid())
   name             String
-  description      String
-  value            String
+  description      String?
+  value            String?
   percentage       String
-  depositFrequency depositFrequency
-  depositValue     String
+  depositFrequency depositFrequency?
+  depositValue     String?
+  userId           String
+  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
