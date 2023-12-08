@@ -2,33 +2,38 @@
 
 import { useSession } from 'next-auth/react';
 import { React, useState } from 'react';
+import Spinner from './Spinner';
 
 export default function Goals({ goals }) {
   const { data: session } = useSession();
   const [goalName, setGoalName] = useState('');
   const [goalCreated, setGoalCreated] = useState(false);
   const [goalsLocal, setGoalsLocal] = useState(goals);
+  const [creatingGoal, setCreatingGoal] = useState(false);
 
   const handleCreateGoal = () => {
     setGoalCreated(true);
   };
 
-  const handleCreatedGoal = async () => {
-    if (goalName) {
-      await fetch('http://localhost:3000/goal/create', {
-        method: 'POST',
-        body: JSON.stringify({
-          userId: session.user.id,
-          name: goalName,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      setGoalsLocal([{ userId: session.user.id, name: goalName, percentage: 0 }, ...goalsLocal]);
-      setGoalCreated(false);
-      setGoalName('');
-    }
+  const handleCreatedGoal = async (event) => {
+    event.preventDefault();
+    setCreatingGoal(true);
+
+    await fetch('http://localhost:3000/goal/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        userId: session.user.id,
+        name: goalName,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    setGoalsLocal([{ userId: session.user.id, name: goalName, percentage: 0 }, ...goalsLocal]);
+    setGoalCreated(false);
+    setGoalName('');
+    setCreatingGoal(false);
   };
 
   const handleGoalNameInputChange = (e) => {
@@ -39,20 +44,22 @@ export default function Goals({ goals }) {
     <div>
       <div className="scrollbar-custom h-[400px] overflow-y-auto pr-2">
         {goalsLocal.map((goal, index) => (
-          <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
-            <div className="mb-2 flex justify-between p-2">
-              <span className="text-xl font-medium text-violet-200">{goal.name}</span>
-              <span className="text-xl font-medium text-violet-200">
-                {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
-              </span>
+          <button type="button" className="w-full">
+            <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
+              <div className="mb-2 flex justify-between text-xl font-medium text-violet-200">
+                <span className="text-left w-4/6 pr-2 border-r-[3px] border-[#2E2E48]">{goal.name}</span>
+                <span>
+                  {goal.percentage < 100 ? `${goal.percentage}%` : 'Complete'}
+                </span>
+              </div>
+              <div className="h-2.5 w-full rounded-full bg-[#2E2E48]">
+                <div
+                  className="h-2.5 rounded-full bg-violet-200"
+                  style={{ width: `${goal.percentage}%` }}
+                />
+              </div>
             </div>
-            <div className="h-2.5 w-full rounded-full bg-[#2E2E48]">
-              <div
-                className="h-2.5 rounded-full bg-violet-200"
-                style={{ width: `${goal.percentage}%` }}
-              />
-            </div>
-          </div>
+          </button>
         ))}
       </div>
       <div className="mt-4 text-right">
@@ -64,7 +71,7 @@ export default function Goals({ goals }) {
   );
 
   const renderGoalForm = () => (
-    <form className="mx-auto w-full rounded-lg bg-[#3A3958] p-4">
+    <form className="mx-auto w-full rounded-lg bg-[#3A3958] p-4" onSubmit={handleCreatedGoal}>
       <h2 className="border-b-2 border-violet-200 pb-2 text-2xl font-semibold text-violet-200">
         New Goal
       </h2>
@@ -100,8 +107,10 @@ export default function Goals({ goals }) {
           </div>
         </div>
         <div className="mt-9 text-center">
-          <button type="submit" onSubmit={handleCreatedGoal} className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
-            Create Goal
+          <button type="submit" className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
+            {creatingGoal ? (
+              <Spinner />
+            ) : 'Create Goal'}
           </button>
         </div>
       </div>
