@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
 
+.custom-grid-rows {
+  grid-template-rows: auto 1fr 1fr; /* default */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .custom-grid-rows {
+    grid-template-rows: auto 2fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .custom-grid-rows {
+    grid-template-rows: auto 1fr 1fr;
+  }
+}
+
 .scrollbar-custom::-webkit-scrollbar {
     width: 8px;
 }
