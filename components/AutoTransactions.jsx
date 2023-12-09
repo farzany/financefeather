@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {React, useState} from 'react';
 
@@ -21,32 +21,32 @@ export default function AutoTransactions() {
   const filteredTransactions = transactions.filter((transaction) => filter === 'All' || transaction.frequency === filter);
 
   return (
-    <div className="w-[550px] h-[550px] p-4 rounded-lg bg-[#2E2E48]">
-      <ul className="space-y-3 flex flex-col h-full justify-center text-violet-200 font-medium">
-        <h2 className="text-3xl font-semibold mb-4 text-center">Automatic Transactions</h2>
-        <div className="h-[400px] overflow-y-auto scrollbar-custom pr-2">
+    <div className="h-[550px] w-[550px] rounded-lg bg-[#2E2E48] p-4">
+      <h2 className="mb-4 mt-1 text-center text-3xl font-semibold">Automatic Transactions</h2>
+      <div className="scrollbar-custom h-[400px] overflow-y-scroll pr-2">
+        <ul>
           {filteredTransactions.map((transaction, index) => (
-            <li key={index} className="pt-3">
-              <button className="text-xl flex w-full justify-between items-center rounded-xl p-3 text-sm bg-[#3A3958] hover:bg-[#2E2E48]">
+            <li key={index} className="pb-3">
+              <button className="flex w-full items-center justify-between rounded-xl bg-[#3A3958] p-3 text-xl hover:bg-[#2E2E48]">
                 <div className="flex flex-1 justify-between">
-                  <div className="text-left w-4/6 whitespace-nowrap overflow-hidden overflow-ellipsis pr-2 border-r-[3px] border-[#2E2E48]">
+                  <div className="w-4/6 truncate border-r-[3px] border-[#2E2E48] pr-2 text-left">
                     {transaction.name}
                   </div>
-                  <div className="text-right whitespace-nowrap overflow-hidden overflow-ellipsis pl-2">
+                  <div className="truncate pl-2 text-right">
                     {transaction.amount}
                   </div>
                 </div>
               </button>
             </li>
           ))}
-        </div>
-        <div className="items-center mt-6">
-          <button type="button" onClick={() => setFilter('All')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'All' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>All</button>
-          <button type="button" onClick={() => setFilter('Weekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Weekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Weekly</button>
-          <button type="button" onClick={() => setFilter('Biweekly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Biweekly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Biweekly</button>
-          <button type="button" onClick={() => setFilter('Monthly')} className={`text-violet-200 px-5 py-1 rounded-md text-xl font-semibold mx-3 ${filter === 'Monthly' ? 'bg-violet-500 text-violet-200': 'bg-[#3A3958] text-violet-200'}`}>Monthly</button>
-        </div>
-      </ul>
+        </ul>
+      </div>
+      <div className="mt-4 flex items-center justify-between">
+        <button type="button" onClick={() => setFilter('All')} className={`rounded-md px-5 py-2 text-xl font-semibold ${filter === 'All' ? 'bg-violet-500 text-white': 'bg-[#3A3958] text-violet-200'}`}>All</button>
+        <button type="button" onClick={() => setFilter('Weekly')} className={`rounded-md px-5 py-2 text-xl font-semibold ${filter === 'Weekly' ? 'bg-violet-500 text-white': 'bg-[#3A3958] text-violet-200'}`}>Weekly</button>
+        <button type="button" onClick={() => setFilter('Biweekly')} className={`rounded-md px-5 py-2 text-xl font-semibold ${filter === 'Biweekly' ? 'bg-violet-500 text-white': 'bg-[#3A3958] text-violet-200'}`}>Biweekly</button>
+        <button type="button" onClick={() => setFilter('Monthly')} className={`rounded-md px-5 py-2 text-xl font-semibold ${filter === 'Monthly' ? 'bg-violet-500 text-white': 'bg-[#3A3958] text-violet-200'}`}>Monthly</button>
+      </div>
     </div>
-  )
+  );
 }
