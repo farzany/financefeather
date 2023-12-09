@@ -42,7 +42,7 @@ export default function Goals({ goals }) {
 
   const renderGoalHome = () => (
     <div>
-      <div className="scrollbar-custom h-[400px] overflow-y-auto pr-2">
+      <div className="scrollbar-custom h-[300px] overflow-y-auto pr-2">
         {goalsLocal.map((goal, index) => (
           <button key={index} type="button" className="w-full">
             <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
@@ -118,7 +118,7 @@ export default function Goals({ goals }) {
   );
 
   return (
-    <div className="h-[550px] w-[550px] rounded-lg bg-[#2E2E48] p-4">
+    <div className="h-[450px] w-[550px] rounded-lg bg-[#2E2E48] p-4">
       <h2 className="mb-4 mt-1 text-center text-3xl font-semibold text-violet-200">Financial Goals</h2>
       {goalCreated ? renderGoalForm() : renderGoalHome() }
     </div>

@@ -21,9 +21,9 @@ export default function AutoTransactions() {
   const filteredTransactions = transactions.filter((transaction) => filter === 'All' || transaction.frequency === filter);
 
   return (
-    <div className="h-[550px] w-[550px] rounded-lg bg-[#2E2E48] p-4">
+    <div className="flex flex-col justify-between w-[550px] rounded-lg bg-[#2E2E48] p-4">
       <h2 className="mb-4 mt-1 text-center text-3xl font-semibold">Automatic Transactions</h2>
-      <div className="scrollbar-custom h-[400px] overflow-y-scroll pr-2">
+      <div className="scrollbar-custom h-[300px] overflow-y-scroll pr-2">
         <ul>
           {filteredTransactions.map((transaction, index) => (
             <li key={index} className="pb-3">

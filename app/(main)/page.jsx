@@ -36,10 +36,10 @@ export default async function Home() {
         <div className="col-span-1 row-span-1 mx-6 mb-4 rounded-3xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
           <Distributions/>
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:ml-6">
+        <div className="col-span-1 row-span-1 mx-6 mb-4 h-fit flex flex-col items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:ml-6">
           <Goals goals={goals} />
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:mr-6">
+        <div className="col-span-1 row-span-1 mx-6 mb-4 h-fit flex flex-col items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:mr-6">
           <AutoTransactions />
         </div>
       </div>
