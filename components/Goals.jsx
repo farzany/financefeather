@@ -66,7 +66,7 @@ export default function Goals({ goals }) {
   );
 
   const renderGoalForm = () => (
-    <form className="mx-auto h-[375px] w-full rounded-lg bg-[#3A3958] p-4" onSubmit={handleCreatedGoal}>
+    <form id="goalForm" className="mx-auto h-[375px] w-full rounded-lg bg-[#3A3958] p-4" onSubmit={handleCreatedGoal}>
       <h2 className="border-b-2 border-violet-200 pb-2 text-2xl font-semibold text-violet-200">
         New Goal
       </h2>
@@ -111,7 +111,7 @@ export default function Goals({ goals }) {
       {goalCreated ? renderGoalForm() : renderGoalHome() }
       <div>
         {goalCreated ? (
-          <button type="submit" className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
+          <button form="goalForm" type="submit" className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
             {creatingGoal ? (
               <Spinner />
             ) : 'Create Goal'}
