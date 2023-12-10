@@ -41,7 +41,7 @@ export default function SignUpCard() {
 
     setLoading(true);
 
-    const response = await fetch('http://localhost:3000/auth/user/create', {
+    const response = await fetch('https://financefeather-nigc857gv-farzany.vercel.app/auth/user/create', {
       method: 'POST',
       body: JSON.stringify({
         name: name,

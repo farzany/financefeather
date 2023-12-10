@@ -19,7 +19,7 @@ export default function Goals({ goals }) {
     event.preventDefault();
     setCreatingGoal(true);
 
-    await fetch('http://localhost:3000/goal/create', {
+    await fetch('https://financefeather-nigc857gv-farzany.vercel.app/goal/create', {
       method: 'POST',
       body: JSON.stringify({
         userId: session.user.id,

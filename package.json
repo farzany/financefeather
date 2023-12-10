@@ -63,7 +63,7 @@
     },
     "testEnvironment": "jest-environment-jsdom",
     "globals": {
-      "baseUrl": "http://localhost/"
+      "baseUrl": "https://financefeather-nigc857gv-farzany.vercel.app/"
     }
   },
   "babel": {
