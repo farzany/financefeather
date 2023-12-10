@@ -1,11 +1,11 @@
 import '../globals.css';
 import { Inter } from 'next/font/google';
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import React from 'react';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 import Image from 'next/image';
-import AuthLayout from './authLayout';
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import React from 'react';
+import AuthLayout from './AuthLayout';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const inter = Inter({ subsets: ['latin'] });
 
