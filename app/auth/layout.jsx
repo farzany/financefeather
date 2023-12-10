@@ -10,7 +10,7 @@ import AuthLayout from './authLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'RhombiChess',
+  title: 'Finance Feather',
   description: 'An exciting new chess variant.',
 };
 
