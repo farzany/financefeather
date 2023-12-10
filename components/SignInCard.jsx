@@ -43,24 +43,24 @@ export default function SignInCard() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" action="#">
-      <h1 className="text-3xl text-left font-semibold text-white">
+      <h1 className="text-left text-3xl font-semibold text-white">
         Sign into Finance Feather
       </h1>
       {errorMessage ? (
-        <div className="p-4 mb-4 text-sm text-red-700 rounded-lg bg-red-100" role="alert">
+        <div className="mb-4 rounded-lg bg-red-100 p-4 text-sm text-red-700" role="alert">
           <span className="font-medium">{errorMessage}</span>
         </div>
       ) : (
-        <div className="p-4 mb-4 text-sm text-[#2E2E48]">
+        <div className="mb-4 p-4 text-sm text-[#2E2E48]">
           .
         </div>
       )}
       <div>
-        <label htmlFor="email" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="email" className="mb-2 block font-medium text-violet-200">
           Email
         </label>
         <input
-          className="block w-full rounded-lg border text-violet-200 border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500"
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -70,12 +70,12 @@ export default function SignInCard() {
         />
       </div>
       <div>
-        <label htmlFor="password" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="password" className="mb-2 block font-medium text-violet-200">
           Password
         </label>
         <div className="relative">
           <input
-            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500"
             id="password"
             name="password"
             value={password}
@@ -102,17 +102,17 @@ export default function SignInCard() {
         <div className="flex items-start">
           <div className="flex h-5 items-center">
             <input
-              className="h-4 w-4 rounded border border-slate-300 bg-slate-50 focus:bg-none checked:text-violet-500 focus:ring-violet-300"
+              className="h-4 w-4 rounded border border-slate-300 bg-slate-50 checked:text-violet-500 focus:bg-none focus:ring-violet-300"
               id="remember"
               type="checkbox"
               value=""
             />
           </div>
-          <label htmlFor="remember" className="ml-2 text-sm text-violet-200 font-medium">
+          <label htmlFor="remember" className="ml-2 text-sm font-medium text-violet-200">
             Remember me
           </label>
         </div>
-        <span className="ml-auto text-sm text-violet-200 hover:underline hover:cursor-pointer">
+        <span className="ml-auto text-sm text-violet-200 hover:cursor-pointer hover:underline">
           Forgot Password?
         </span>
       </div>

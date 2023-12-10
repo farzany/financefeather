@@ -20,11 +20,11 @@ export default function SignUpCard() {
   const handleNameChange = (event) => setName(event.target.value.trim());
   const handleEmailChange = (event) => setEmail(event.target.value.trim());
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
+    setPassword(event.target.value);
     setErrors({});
   };
   const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value)
+    setConfirmPassword(event.target.value);
     setErrors({});
   };
 
@@ -33,24 +33,24 @@ export default function SignUpCard() {
     if (!email || !password) {
       return;
     }
-    
+
     if (password !== confirmPassword) {
-      setErrors(prev => ({...prev, ...{ confirmPassword: 'Passwords do not match.' }}));
+      setErrors((prev) => ({...prev, ...{ confirmPassword: 'Passwords do not match.' }}));
       return;
     }
 
     setLoading(true);
 
-    const response = await fetch("http://localhost:3000/auth/user/create", {
-      method: "POST",
+    const response = await fetch('http://localhost:3000/auth/user/create', {
+      method: 'POST',
       body: JSON.stringify({
         name: name,
         email: email,
         password: password,
       }),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     });
 
     const data = await response.json();
@@ -62,7 +62,7 @@ export default function SignUpCard() {
         redirect: false,
         callbackUrl: '/',
       });
-  
+
       if (!status?.error) {
         router.refresh();
       } else {
@@ -71,21 +71,21 @@ export default function SignUpCard() {
       }
     } else {
       setLoading(false);
-      setErrors(prev => ({...prev, ...{ email: 'This email is already in use, try another.' }}))
+      setErrors((prev) => ({...prev, ...{ email: 'This email is already in use, try another.' }}));
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" action="#">
-      <h1 className="text-3xl mb-12 text-left font-semibold text-white">
+      <h1 className="mb-12 text-left text-3xl font-semibold text-white">
         Register for an Account
       </h1>
       <div>
-        <label htmlFor="name" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="name" className="mb-2 block font-medium text-violet-200">
           Full Name
         </label>
         <input
-          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+          className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500"
           id="name"
           name="name"
           onChange={handleNameChange}
@@ -95,11 +95,11 @@ export default function SignUpCard() {
         />
       </div>
       <div>
-        <label htmlFor="email" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="email" className="mb-2 block font-medium text-violet-200">
           Email
         </label>
         <input
-          className={`block w-full rounded-lg border ${errors?.email ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none`}
+          className={`block w-full rounded-lg border ${errors?.email ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 text-violet-200 placeholder:text-[#AAAACF] focus:outline-none`}
           id="email"
           name="email"
           onChange={handleEmailChange}
@@ -107,17 +107,17 @@ export default function SignUpCard() {
           required
           type="email"
         />
-        <span className={`${errors?.email ? 'block' : 'hidden'} text-red-400 text-sm pt-1 absolute`}>
+        <span className={`${errors?.email ? 'block' : 'hidden'} absolute pt-1 text-sm text-red-400`}>
           {errors.email}
         </span>
       </div>
       <div>
-        <label htmlFor="password" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="password" className="mb-2 block font-medium text-violet-200">
           Password
         </label>
         <div className="relative">
           <input
-            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none focus:border-violet-500 focus:ring-violet-500"
+            className="block w-full rounded-lg border border-[#3A3958] bg-[#3A3958] p-2.5 pr-12 text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500"
             id="password"
             name="password"
             value={password}
@@ -141,12 +141,12 @@ export default function SignUpCard() {
         </div>
       </div>
       <div>
-        <label htmlFor="confirmPassword" className="mb-2 block text-violet-200 font-medium">
+        <label htmlFor="confirmPassword" className="mb-2 block font-medium text-violet-200">
           Confirm Password
         </label>
         <div className="relative mb-4">
           <input
-            className={`block w-full rounded-lg border ${errors?.confirmPassword ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 placeholder:text-[#AAAACF] text-violet-200 focus:outline-none`}
+            className={`block w-full rounded-lg border ${errors?.confirmPassword ? 'border-red-400 focus:border-red-400 focus:ring-transparent' : 'border-[#3A3958] focus:border-violet-500 focus:ring-violet-500'} bg-[#3A3958] p-2.5 pr-12 text-violet-200 placeholder:text-[#AAAACF] focus:outline-none`}
             id="confirmPassword"
             name="confirmPassword"
             value={confirmPassword}
@@ -167,7 +167,7 @@ export default function SignUpCard() {
               <ClosedEye />
             )}
           </button>
-          <span className={`${errors?.confirmPassword ? 'block' : 'hidden'} text-red-400 text-sm pt-1 absolute`}>
+          <span className={`${errors?.confirmPassword ? 'block' : 'hidden'} absolute pt-1 text-sm text-red-400`}>
             {errors.confirmPassword}
           </span>
         </div>

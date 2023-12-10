@@ -2,7 +2,6 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import AutoTransactions from '@/components/AutoTransactions';
-import { SignOutButton } from '@/components/Buttons';
 import Distributions from '@/components/Distributions';
 import GeneralInfo from '@/components/GeneralInfo';
 import Goals from '@/components/Goals';

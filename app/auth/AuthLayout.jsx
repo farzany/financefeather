@@ -11,7 +11,7 @@ export default function AuthLayout({ children }) {
       <div className="flex h-[700px] w-full max-w-[1000px] justify-end rounded-lg bg-[#3A3958]">
         <div className="relative flex w-1/2 shrink-0 flex-col items-center justify-start">
           <div className="mt-24">
-            <Image src={'/logo.png'} width={300} height={500} />
+            <Image src={'/logo.png'} width={300} height={500} alt="Finance Feather Logo" />
           </div>
           <div className="mt-4 w-full py-8 text-center text-4xl font-semibold text-violet-200">
               Welcome to <br /> Finance Feather
