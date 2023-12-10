@@ -12,7 +12,7 @@
 
 @media (min-width: 1024px) { /* lg breakpoint */
   .custom-grid-rows {
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-rows: 90px auto 1fr;
   }
 }
 

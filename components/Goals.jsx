@@ -42,7 +42,7 @@ export default function Goals({ goals }) {
 
   const renderGoalHome = () => (
     <div>
-      <div className="scrollbar-custom h-[300px] overflow-y-auto pr-2">
+      <div className="scrollbar-custom h-[375px] overflow-y-scroll pr-2">
         {goalsLocal.map((goal, index) => (
           <button key={index} type="button" className="w-full">
             <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">
@@ -62,16 +62,11 @@ export default function Goals({ goals }) {
           </button>
         ))}
       </div>
-      <div className="mt-4 text-right">
-        <button type="button" onClick={handleCreateGoal} className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
-          New Goal
-        </button>
-      </div>
     </div>
   );
 
   const renderGoalForm = () => (
-    <form className="mx-auto w-full rounded-lg bg-[#3A3958] p-4" onSubmit={handleCreatedGoal}>
+    <form className="mx-auto h-[375px] w-full rounded-lg bg-[#3A3958] p-4" onSubmit={handleCreatedGoal}>
       <h2 className="border-b-2 border-violet-200 pb-2 text-2xl font-semibold text-violet-200">
         New Goal
       </h2>
@@ -106,21 +101,27 @@ export default function Goals({ goals }) {
             <input className="w-full rounded-md border border-[#3A3958] bg-[#2E2E48] p-1 px-2 text-lg text-violet-200 placeholder:text-[#AAAACF] focus:border-violet-500 focus:outline-none focus:ring-violet-500" type="text" placeholder="20.00" />
           </div>
         </div>
-        <div className="mt-9 text-center">
-          <button type="submit" className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
-            {creatingGoal ? (
-              <Spinner />
-            ) : 'Create Goal'}
-          </button>
-        </div>
       </div>
     </form>
   );
 
   return (
-    <div className="h-[450px] w-[550px] rounded-lg bg-[#2E2E48] p-4">
-      <h2 className="mb-4 mt-1 text-center text-3xl font-semibold text-violet-200">Financial Goals</h2>
+    <div className="flex h-full w-full max-w-[550px] flex-col justify-between rounded-2xl bg-[#2E2E48] p-4">
+      <h2 className="text-center text-3xl font-semibold text-violet-200">Financial Goals</h2>
       {goalCreated ? renderGoalForm() : renderGoalHome() }
+      <div>
+        {goalCreated ? (
+          <button type="submit" className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
+            {creatingGoal ? (
+              <Spinner />
+            ) : 'Create Goal'}
+          </button>
+        ) : (
+          <button type="button" onClick={handleCreateGoal} className="w-full rounded-md bg-violet-500 px-3 py-2 text-xl font-semibold text-white">
+            New Goal
+          </button>
+        )}
+      </div>
     </div>
   );
 }
