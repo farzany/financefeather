@@ -26,7 +26,7 @@ export default function GeneralInfo() {
   }, []);
 
 
-  // hard coded data for recent transactions. Change if you want
+  // Hard coded data for recent transactions. Change if you want
   const data = [
     { transaction: 'Textbook Purchase', value: '$60.00' },
     { transaction: 'Charity Donation', value: '$5.00' },
@@ -57,7 +57,7 @@ export default function GeneralInfo() {
 
   return (
     <div className="relative">
-      <aside id="default-sidebar" className="relative right-0 top-0 z-40 h-screen">
+      <aside id="default-sidebar" className="relative right-0 top-0 z-40 h-screen w-[350px]">
         <div className="flex h-full flex-col overflow-y-auto bg-[#2E2E48] py-4">
           <div className="group relative mx-3 flex items-center justify-between p-4 text-violet-200">
             <div className="flex">
@@ -113,7 +113,7 @@ export default function GeneralInfo() {
               </div>
             </ul>
           </div>
-          <div className="flex justify-between pl-5 text-sm text-violet-200">
+          <div className="flex justify-between pl-5 text-violet-200">
             <div>
               Month to Date Sum:
             </div>

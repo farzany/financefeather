@@ -25,7 +25,7 @@ export default function Distributions() {
       <div className="-mb-12 flex items-center whitespace-nowrap py-4 text-3xl font-bold">
         <span>Financial Distributions</span>
       </div>
-      <div className="relative grid h-full w-full grid-cols-6 grid-rows-1 items-center gap-4 px-12">
+      <div className="relative -mb-6 grid h-full w-full grid-cols-6 grid-rows-1 items-center gap-4 px-6">
 
         <motion.div
           className={`relative flex cursor-pointer items-center justify-center ${isSelected === 'Debit' ? 'col-span-4' : 'col-span-1 hover:bg-[#504e78]'} row-span-1 h-3/4 rounded-2xl bg-[#3A3958]`}

@@ -29,17 +29,17 @@ export default async function Home() {
       <div>
         <LeftNav/>
       </div>
-      <div className="custom-grid-rows grid h-full min-w-[500px] grid-cols-1 gap-4 overflow-y-auto rounded-3xl border-[#3A3958] bg-[#3A3958] text-violet-200 md:grid-cols-2 lg:w-3/4 lg:grid-cols-4">
-        <div className="row-span-1 ml-8 mt-12 whitespace-nowrap text-4xl font-medium">
+      <div className="custom-grid-rows grid h-full min-w-[500px] grid-cols-1 overflow-y-auto border-[#3A3958] bg-[#3A3958] text-violet-200 md:grid-cols-2 lg:w-3/4 lg:grid-cols-4">
+        <div className="col-span-3 row-span-1 ml-8 mt-7 h-fit w-full text-4xl font-medium">
           Hello, {session.user.name.split(' ')[0]}! Welcome back 👋
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 rounded-3xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
+        <div className="col-span-1 mx-6 h-[350px] rounded-2xl bg-[#2E2E48] md:col-span-2 lg:col-span-4">
           <Distributions/>
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:ml-6">
+        <div className="col-span-1 row-span-1 my-2 ml-6 mr-1 flex flex-col items-center justify-center rounded-2xl bg-[#2E2E48] md:col-span-2">
           <Goals goals={goals} />
         </div>
-        <div className="col-span-1 row-span-1 mx-6 mb-4 flex items-center justify-center rounded-3xl bg-[#2E2E48] md:col-span-2 lg:mr-6">
+        <div className="col-span-1 row-span-1 my-2 ml-1 mr-6 flex flex-col items-center justify-center rounded-2xl bg-[#2E2E48] md:col-span-2">
           <AutoTransactions />
         </div>
       </div>

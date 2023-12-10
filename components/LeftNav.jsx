@@ -13,15 +13,7 @@ export default function LeftNav() {
 
   return (
     <div>
-      <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button"
-        className="ms-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 sm:hidden ">
-        <span className="sr-only">Open sidebar</span>
-        <svg className="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-        </svg>
-      </button>
-
-      <aside id="default-sidebar" className="relative left-0 top-0 z-40 h-screen max-w-full -translate-x-full transition-transform sm:translate-x-0" aria-label="Sidebar">
+      <aside id="default-sidebar" className="relative left-0 top-0 z-40 h-screen w-[220px] -translate-x-full transition-transform sm:translate-x-0" aria-label="Sidebar">
         <div className="flex h-full flex-col overflow-y-auto bg-[#2E2E48] py-4">
           <a href="" className="mb-9 mt-7 flex items-center">
             <Image
@@ -35,7 +27,7 @@ export default function LeftNav() {
           <ul className="flex flex-col justify-center space-y-3 font-medium">
             <li>
               <button
-                className={`flex w-full items-center rounded-l-2xl text-violet-200 ${active === 'Dashboard' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
+                className={`flex w-full items-center text-violet-200 ${active === 'Dashboard' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
                 onClick={() => handleActiveButton('Dashboard')}
               >
                 <a href="#" className="group mx-5 flex items-center p-4 hover:bg-[#3A3958]">
@@ -49,7 +41,7 @@ export default function LeftNav() {
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded-l-2xl text-violet-200 ${active === 'Analytics' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
+                className={`flex w-full items-center text-violet-200 ${active === 'Analytics' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
                 onClick={() => handleActiveButton('Analytics')}
               >
                 <a href="#" className="group mx-5 flex items-center rounded-lg p-4 hover:bg-[#3A3958]">
@@ -62,7 +54,7 @@ export default function LeftNav() {
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded-l-2xl text-violet-200 ${active === 'Wallet' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
+                className={`flex w-full items-center text-violet-200 ${active === 'Wallet' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
                 onClick={() => handleActiveButton('Wallet')}
               >
                 <a href="#" className="group mx-5 flex items-center rounded-lg p-4 hover:bg-[#3A3958]">
@@ -76,7 +68,7 @@ export default function LeftNav() {
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded-l-2xl text-violet-200 ${active === 'Profile' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
+                className={`flex w-full items-center text-violet-200 ${active === 'Profile' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
                 onClick={() => handleActiveButton('Profile')}
               >
                 <a href="#" className="group mx-5 flex items-center rounded-lg p-4 hover:bg-[#3A3958]">
@@ -89,7 +81,7 @@ export default function LeftNav() {
             </li>
             <li>
               <button
-                className={`flex w-full items-center rounded-l-2xl text-violet-200 ${active === 'Transfers' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
+                className={`flex w-full items-center text-violet-200 ${active === 'Transfers' ? 'bg-[#3A3958]' : ''} group hover:bg-[#3A3958]`}
                 onClick={() => handleActiveButton('Transfers')}
               >
                 <a href="#" className="group mx-5 flex items-center rounded-lg p-4 hover:bg-[#3A3958]">
