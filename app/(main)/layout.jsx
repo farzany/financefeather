@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Finance Feather',
-  description: '', // TODO
+  description: 'A lightweight financial management system.',
 };
 
 export default async function RootLayout({ children }) {
