@@ -63,13 +63,14 @@ enum depositFrequency {
 }
 
 model Goal {
-  id               String @id @default(cuid())
+  id               String   @id @default(cuid())
   name             String
   description      String?
   value            String?
-  percentage       String
+  percentage       String?  @default("0")
   depositFrequency depositFrequency?
   depositValue     String?
   userId           String
-  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt        DateTime @default(now())
 }

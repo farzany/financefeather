@@ -8,7 +8,7 @@ export default function Goals({ goals }) {
   const { data: session } = useSession();
   const [goalName, setGoalName] = useState('');
   const [goalCreated, setGoalCreated] = useState(false);
-  const [goalsLocal, setGoalsLocal] = useState(goals);
+  const [goalsLocal, setGoalsLocal] = useState([...goals, { name: 'Register for Feather Finance', percentage: '100' }]);
   const [creatingGoal, setCreatingGoal] = useState(false);
 
   const handleCreateGoal = () => {
@@ -42,7 +42,7 @@ export default function Goals({ goals }) {
 
   const renderGoalHome = () => (
     <div>
-      <div className="scrollbar-custom h-[375px] overflow-y-scroll pr-2">
+      <div className="scrollbar-custom h-[375px] overflow-y-auto pr-2">
         {goalsLocal.map((goal, index) => (
           <button key={index} type="button" className="w-full">
             <div key={index} className="mb-4 rounded-lg bg-[#3A3958] p-4">

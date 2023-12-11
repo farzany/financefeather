@@ -17,7 +17,7 @@ export default async function Home() {
       userId: session.user.id,
     },
     orderBy: {
-      id: 'desc',
+      createdAt: 'desc',
     },
   });
 
